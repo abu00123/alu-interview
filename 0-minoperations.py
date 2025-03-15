@@ -1,20 +1,29 @@
 #!/usr/bin/python3
-"""Minimum Operations"""
-import math
+"""
+Function to generate Pascal's Triangle
+"""
 
 
-def minOperations(n):
-    """Minimum Operations"""
-    if n <= 1:
-        return 0
+def pascal_triangle(n):
+    """Generates Pascal’s triangle up to n rows."""
+    if n <= 0:
+        return []
 
-    operations = 0
-    for i in range(2, int(math.sqrt(abs(n))) + 1):
-        while n % i == 0:
-            operations += i
-            n //= i
+    triangle = [[1]]
+    for i in range(1, n):
+        row = [1]
+        for j in range(1, i):
+            row.append(triangle[i - 1][j - 1] + triangle[i - 1][j])
+        row.append(1)
+        triangle.append(row)
 
-    if n > 1:
-        operations += n
+    return triangle
 
-    return operations
+
+# Example usage:
+if __name__ == "__main__":
+    n = 5
+    result = pascal_triangle(n)
+    for row in result:
+        print(row)
+
