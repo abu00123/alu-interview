@@ -20,10 +20,3 @@ def pascal_triangle(n):
     return triangle
 
 
-# Example usage:
-if __name__ == "__main__":
-    n = 5
-    result = pascal_triangle(n)
-    for row in result:
-        print(row)
-
